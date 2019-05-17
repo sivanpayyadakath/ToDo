@@ -17,6 +17,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("Documents Directory: ", FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last ?? "Not Found!")
+        
+//        let sections = ["a","b","c"]
+//
+//        let context = persistentContainer.viewContext
+//
+//        for i in 0...sections.count{
+//            let entity = NSEntityDescription.entity(forEntityName: "Section", in: context)!
+//            let section = NSManagedObject(entity: entity, insertInto: context)
+//
+//            section.setValue(sections[i], forKey: "name")
+//
+//            try! context.save()
+//        }
+        
+        
         return true
     }
 
@@ -72,6 +88,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    
 
     // MARK: - Core Data Saving support
 

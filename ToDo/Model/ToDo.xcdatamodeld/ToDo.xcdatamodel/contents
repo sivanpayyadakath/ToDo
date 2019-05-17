@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Section" representedClassName="Section" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parameters" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Todo" inverseName="parameter" inverseEntity="Todo" syncable="YES"/>
+    </entity>
     <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="sub" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="parameter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="parameters" inverseEntity="Section" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Todo" positionX="-45" positionY="0" width="128" height="90"/>
+        <element name="Section" positionX="-261.59375" positionY="-0.72265625" width="128" height="75"/>
+        <element name="Todo" positionX="-45" positionY="0" width="128" height="105"/>
     </elements>
 </model>

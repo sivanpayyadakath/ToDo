@@ -61,7 +61,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                        <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="todoSubTitle" destination="k2c-3l-XHU" id="j5v-6H-r1j"/>
                                             <outlet property="todoTitle" destination="aM2-w5-xmx" id="iCv-Ek-sYX"/>
@@ -95,7 +95,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nXb-2v-rfF"/>
+                    <navigationItem key="navigationItem" id="nXb-2v-rfF">
+                        <barButtonItem key="rightBarButtonItem" title="New Section" id="Wzw-BA-yaI">
+                            <connections>
+                                <action selector="addSection:" destination="BYZ-38-t0r" id="z6y-Aj-5Ag"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="Jy1-NZ-2kx" id="orL-Op-oka"/>
                         <outlet property="tableView" destination="C8g-he-yzO" id="dKA-nf-Lqm"/>
