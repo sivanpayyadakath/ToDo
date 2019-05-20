@@ -62,7 +62,7 @@ class TodosViewController: UIViewController {
 //        navigationItem .leftBarButtonItem = editButtonItem
         
         //add todo via textfield is disabled at first
-        addTextButton.isEnabled = false
+//        addTextButton.isEnabled = false
         
     }
 
@@ -130,6 +130,15 @@ class TodosViewController: UIViewController {
         }
     }
     
+    @IBAction func addTodoViaText(_ sender: UIButton) {
+        if (addTextField?.text?.isEmpty)!{
+            
+        }else{
+        let v = addTextField.text!
+        save(title: v, sub: "")
+        tableView.reloadData()
+        }
+    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
@@ -255,17 +264,14 @@ extension TodosViewController : UITableViewDataSource {
 
 }
 
-
 extension TodosViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let newText = textField.text, textField.text != ""{
         save(title: newText, sub: "")
         textField.text = ""
         tableView.reloadData()
-        
         }
         return true
     }
 
-    
 }
