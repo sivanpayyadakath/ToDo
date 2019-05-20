@@ -19,12 +19,14 @@ class TodosViewController: UIViewController {
     var sections: [NSManagedObject] = []
     let titleForSections = ["Not Started", "On Progress", "Done"]
     
+    @IBOutlet weak var addTextField: UITextField!
+    @IBOutlet weak var addTextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.isEditing = true
         tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 80
+        // tableView.estimatedRowHeight = 80
         
         // Do any additional setup after loading the view.
      
@@ -57,53 +59,13 @@ class TodosViewController: UIViewController {
             print("couldnt fetch \(error) \(error.userInfo)")
         }
         
-        navigationItem .leftBarButtonItem = editButtonItem
+//        navigationItem .leftBarButtonItem = editButtonItem
+        
+        //add todo via textfield is disabled at first
+        addTextButton.isEnabled = false
+        
     }
 
-    @IBAction func addSection(_ sender: Any) {
-        
-        let alert = UIAlertController(title: "Add Section", message: "", preferredStyle: .alert)
-        
-        alert.addTextField(configurationHandler: {textField in
-            textField.placeholder = "New section name"
-        })
-        
-        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: {
-            action in
-            
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-                return
-            }
-            
-            let managedContext = appDelegate.persistentContainer.viewContext
-            
-            let entity = NSEntityDescription.entity(forEntityName: "Section", in: managedContext)!
-            
-            let section = NSManagedObject(entity: entity, insertInto: managedContext)
-            
-             let name = alert.textFields![0].text!
-            
-            section.setValue(name, forKey: "name")
-            
-            do {
-                try managedContext.save()
-                self.tableView.reloadData()
-            } catch let error as NSError {
-                print("could save section \(error) \(error.userInfo) ")
-            }
-            
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {
-            action in
-            
-            print("nigga cancelled")
-            
-        }))
-        
-
-        present(alert,animated: true)
-    }
     
     @IBAction func addTodo(_ sender: Any) {
         let alert = UIAlertController(title: "Add Todo", message: "What is it?", preferredStyle: .alert)
@@ -155,7 +117,7 @@ class TodosViewController: UIViewController {
         
         todo.setValue(title, forKey: "title")
         todo.setValue(sub, forKey: "sub")
-        todo.setValue(1, forKey: "status")
+        todo.setValue(0, forKey: "status")
         
         do {
             try managedContext.save()
@@ -168,9 +130,11 @@ class TodosViewController: UIViewController {
         }
     }
     
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
             print("deleting \(indexPath.row)")
+            
             
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
                 return
@@ -288,6 +252,20 @@ extension TodosViewController : UITableViewDataSource {
             print("error in actual moving")
             }
         }
+
+}
+
+
+extension TodosViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let newText = textField.text, textField.text != ""{
+        save(title: newText, sub: "")
+        textField.text = ""
+        tableView.reloadData()
+        
+        }
+        return true
+    }
 
     
 }

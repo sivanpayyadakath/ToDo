@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="C8g-he-yzO">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="714"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="200" id="5zi-W0-Gmx" customClass="TodosTableViewCell" customModule="ToDo" customModuleProvider="target">
@@ -48,7 +48,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.080136210585561862" green="0.32231236594071438" blue="0.37204465501666684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <color key="tintColor" red="0.47619847430000001" green="0.5285847038" blue="0.92829096499999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="k2c-3l-XHU" secondAttribute="bottom" constant="10" id="2x1-gX-rSz"/>
@@ -83,27 +83,48 @@
                                     <action selector="addTodo:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uMA-Te-YU8"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a Todo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cjb-Fd-uN8">
+                                <rect key="frame" x="5" y="93" width="326" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="wrJ-lV-oJn"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="7XS-hC-LuJ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DH6-3E-rJt">
+                                <rect key="frame" x="336" y="88" width="78" height="60"/>
+                                <state key="normal" title="Add">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="C8g-he-yzO" secondAttribute="trailing" id="2M4-T6-cqn"/>
+                            <constraint firstItem="cjb-Fd-uN8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="BEo-WO-g1f"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DH6-3E-rJt" secondAttribute="trailing" id="BFt-6J-YXz"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="C8g-he-yzO" secondAttribute="bottom" id="CSE-PB-PuH"/>
+                            <constraint firstItem="DH6-3E-rJt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Mlu-Ii-YaX"/>
                             <constraint firstItem="C8g-he-yzO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XDw-HE-Jg5"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jy1-NZ-2kx" secondAttribute="bottom" constant="30" id="b4V-pq-KJB"/>
-                            <constraint firstItem="C8g-he-yzO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="chp-Iv-Nxb"/>
+                            <constraint firstItem="C8g-he-yzO" firstAttribute="top" secondItem="DH6-3E-rJt" secondAttribute="bottom" id="d4b-dC-d21"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jy1-NZ-2kx" secondAttribute="trailing" constant="30" id="m46-As-T69"/>
+                            <constraint firstItem="C8g-he-yzO" firstAttribute="top" secondItem="cjb-Fd-uN8" secondAttribute="bottom" constant="5" id="nXR-od-P7q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cjb-Fd-uN8" secondAttribute="trailing" constant="83" id="qGA-Nh-LqX"/>
+                            <constraint firstItem="DH6-3E-rJt" firstAttribute="leading" secondItem="cjb-Fd-uN8" secondAttribute="trailing" constant="5" id="rVj-tf-73n"/>
+                            <constraint firstItem="cjb-Fd-uN8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="wc6-kU-QjF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="nXb-2v-rfF">
-                        <barButtonItem key="rightBarButtonItem" title="New Section" id="Wzw-BA-yaI">
-                            <connections>
-                                <action selector="addSection:" destination="BYZ-38-t0r" id="z6y-Aj-5Ag"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="nXb-2v-rfF"/>
                     <connections>
                         <outlet property="addButton" destination="Jy1-NZ-2kx" id="orL-Op-oka"/>
+                        <outlet property="addTextButton" destination="DH6-3E-rJt" id="9rh-Ez-hDE"/>
+                        <outlet property="addTextField" destination="cjb-Fd-uN8" id="vT0-o6-3C8"/>
                         <outlet property="tableView" destination="C8g-he-yzO" id="dKA-nf-Lqm"/>
                     </connections>
                 </viewController>
