@@ -24,6 +24,7 @@ class TodosViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Todo"
         self.tableView.isEditing = true
         tableView.rowHeight = UITableView.automaticDimension
         // tableView.estimatedRowHeight = 80
@@ -167,7 +168,6 @@ class TodosViewController: UIViewController {
             default:
                 print("error in deleting")
             }
-            
         
         }
         
@@ -271,6 +271,7 @@ extension TodosViewController: UITextFieldDelegate {
         textField.text = ""
         tableView.reloadData()
         }
+        self.view.endEditing(true)
         return true
     }
 
