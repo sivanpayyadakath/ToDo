@@ -6,12 +6,13 @@
     </entity>
     <entity name="Todo" representedClassName="Todo" syncable="YES" codeGenerationType="class">
         <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="sub" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="parameter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="parameters" inverseEntity="Section" syncable="YES"/>
     </entity>
     <elements>
         <element name="Section" positionX="-261.59375" positionY="-0.72265625" width="128" height="75"/>
-        <element name="Todo" positionX="-45" positionY="0" width="128" height="105"/>
+        <element name="Todo" positionX="-45" positionY="0" width="128" height="120"/>
     </elements>
 </model>
